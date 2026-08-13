@@ -1569,7 +1569,104 @@
        JAVASCRIPT CONNECTION
        ========================= -->
 
-  <script src="script.js"></script>
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  if (menu) menu.classList.toggle("active");
+}
+
+function openLogin() {
+  const overlay = document.getElementById("authOverlay");
+  if (overlay) {
+    overlay.classList.add("active");
+    showLogin();
+  }
+}
+
+function openRegister() {
+  const overlay = document.getElementById("authOverlay");
+  if (overlay) {
+    overlay.classList.add("active");
+    showRegister();
+  }
+}
+
+function closeAuth() {
+  const overlay = document.getElementById("authOverlay");
+  if (overlay) overlay.classList.remove("active");
+}
+
+function showLogin() {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+}
+
+function showRegister() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+}
+
+function togglePassword(id) {
+  const input = document.getElementById(id);
+
+  if (input) {
+    input.type =
+      input.type === "password"
+        ? "text"
+        : "password";
+  }
+}
+
+function demoLogin() {
+  const identity = document.getElementById("loginIdentity").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  if (!identity || !password) {
+    alert("Please enter your email/phone number and password.");
+    return;
+  }
+
+  alert("Login is currently a frontend demo. Real authentication will be connected later.");
+}
+
+function demoRegister() {
+  const name = document.getElementById("registerName").value.trim();
+  const email = document.getElementById("registerEmail").value.trim();
+  const phone = document.getElementById("registerPhone").value.trim();
+  const password = document.getElementById("registerPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if (!name || !email || !phone || !password || !confirm) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  if (password !== confirm) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  alert("Registration is currently a frontend demo. Real account creation will be connected later.");
+}
+
+function demoReferral() {
+  alert("The referral system will be activated when the backend is connected.");
+}
+
+document.addEventListener("click", function(event) {
+  const overlay = document.getElementById("authOverlay");
+
+  if (overlay && event.target === overlay) {
+    closeAuth();
+  }
+});
+
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+</script>
 
 </body>
 </html>
