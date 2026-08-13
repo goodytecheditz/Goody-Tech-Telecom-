@@ -1,8 +1,13 @@
 /* =========================================
    GOODY TECH TELECOM
    MAIN JAVASCRIPT
-   Frontend demo — backend/API later
-   ========================================= */
+   Frontend demo — Backend/API later
+========================================= */
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
 
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
@@ -13,9 +18,9 @@ function toggleMenu() {
 }
 
 
-/* ==============================
-   AUTHENTICATION UI
-   ============================== */
+/* =========================================
+   LOGIN / REGISTER
+========================================= */
 
 function openLogin() {
   const overlay = document.getElementById("authOverlay");
@@ -74,9 +79,9 @@ function showRegister() {
 }
 
 
-/* ==============================
+/* =========================================
    PASSWORD VISIBILITY
-   ============================== */
+========================================= */
 
 function togglePassword(id) {
   const input = document.getElementById(id);
@@ -85,77 +90,136 @@ function togglePassword(id) {
     return;
   }
 
-  input.type =
-    input.type === "password"
-      ? "text"
-      : "password";
+  if (input.type === "password") {
+    input.type = "text";
+  } else {
+    input.type = "password";
+  }
 }
 
 
-/* ==============================
-   FRONTEND DEMO LOGIN
-   ============================== */
+/* =========================================
+   DEMO LOGIN
+========================================= */
 
 function demoLogin() {
+
+  const identityElement =
+    document.getElementById("loginIdentity");
+
+  const passwordElement =
+    document.getElementById("loginPassword");
+
   const identity =
-    document.getElementById("loginIdentity")?.value.trim();
+    identityElement ? identityElement.value.trim() : "";
 
   const password =
-    document.getElementById("loginPassword")?.value;
+    passwordElement ? passwordElement.value : "";
+
 
   if (!identity || !password) {
-    alert("Please enter your email/phone and password.");
+
+    alert(
+      "Please enter your email/phone number and password."
+    );
+
     return;
   }
 
+
   alert(
-    "Login is currently a frontend demo. Real authentication will be connected to the backend/API later."
+    "Login is currently a frontend demo. " +
+    "Real authentication will be connected to the backend/API later."
   );
 }
 
 
-/* ==============================
-   FRONTEND DEMO REGISTER
-   ============================== */
+/* =========================================
+   DEMO REGISTRATION
+========================================= */
 
 function demoRegister() {
+
+  const nameElement =
+    document.getElementById("registerName");
+
+  const emailElement =
+    document.getElementById("registerEmail");
+
+  const phoneElement =
+    document.getElementById("registerPhone");
+
+  const passwordElement =
+    document.getElementById("registerPassword");
+
+  const confirmElement =
+    document.getElementById("confirmPassword");
+
+
   const name =
-    document.getElementById("registerName")?.value.trim();
+    nameElement ? nameElement.value.trim() : "";
 
   const email =
-    document.getElementById("registerEmail")?.value.trim();
+    emailElement ? emailElement.value.trim() : "";
 
   const phone =
-    document.getElementById("registerPhone")?.value.trim();
+    phoneElement ? phoneElement.value.trim() : "";
 
   const password =
-    document.getElementById("registerPassword")?.value;
+    passwordElement ? passwordElement.value : "";
 
   const confirm =
-    document.getElementById("confirmPassword")?.value;
+    confirmElement ? confirmElement.value : "";
 
-  if (!name || !email || !phone || !password || !confirm) {
+
+  if (
+    !name ||
+    !email ||
+    !phone ||
+    !password ||
+    !confirm
+  ) {
+
     alert("Please fill in all fields.");
+
     return;
   }
+
 
   if (password !== confirm) {
+
     alert("Passwords do not match.");
+
     return;
   }
 
+
   alert(
-    "Registration is currently a frontend demo. Real account creation will be connected to the backend/API later."
+    "Registration is currently a frontend demo. " +
+    "Real account creation will be connected to the backend/API later."
   );
 }
 
 
-/* ==============================
-   CLOSE MODAL WHEN CLICKING
-   OUTSIDE THE AUTH BOX
-   ============================== */
+/* =========================================
+   REFERRAL DEMO
+========================================= */
+
+function demoReferral() {
+
+  alert(
+    "Your referral link will be generated automatically " +
+    "after the account and referral system are connected."
+  );
+}
+
+
+/* =========================================
+   CLOSE LOGIN/REGISTER WHEN CLICKING OUTSIDE
+========================================= */
 
 document.addEventListener("click", function(event) {
+
   const overlay =
     document.getElementById("authOverlay");
 
@@ -165,17 +229,20 @@ document.addEventListener("click", function(event) {
   ) {
     closeAuth();
   }
+
 });
 
 
-/* ==============================
+/* =========================================
    CURRENT YEAR
-   ============================== */
+========================================= */
 
 const yearElement =
   document.getElementById("year");
 
 if (yearElement) {
+
   yearElement.textContent =
     new Date().getFullYear();
+
 }
