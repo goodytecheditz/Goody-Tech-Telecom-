@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,8 +59,8 @@
         <button class="hero-btn" onclick="showAuth()">Get Started</button>
     </div>
 
-    <!-- 2. The Login & Signup Screen (Hidden until user clicks Get Started) -->
-    <div id="auth-section" style="display: none;">
+    <!-- 2. The Login & Signup Screen -->
+    <div id="auth-section">
         <div class="container">
             
             <!-- Login Form -->
@@ -70,13 +69,13 @@
                 <p class="subtitle">Please log in to your account.</p>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" placeholder="Enter your email" required>
+                    <input type="email" id="login-email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" placeholder="Enter your password" required>
+                    <input type="password" id="login-password" placeholder="Enter your password" required>
                 </div>
-                <button type="button" class="auth-btn" onclick="goToDashboard()">Log In</button>
+                <button type="button" class="auth-btn" onclick="handleLogin()">Log In</button>
                 <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="toggleForms()">Sign up here</span></p>
             </div>
 
@@ -86,24 +85,24 @@
                 <p class="subtitle">Join the best VTU platform today.</p>
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Enter your full name" required>
+                    <input type="text" id="reg-name" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" placeholder="Enter your email" required>
+                    <input type="email" id="reg-email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" placeholder="Create a password" required>
+                    <input type="password" id="reg-password" placeholder="Create a password" required>
                 </div>
-                <button type="button" class="auth-btn" onclick="goToDashboard()">Sign Up</button>
+                <button type="button" class="auth-btn" onclick="handleSignUp()">Sign Up</button>
                 <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="toggleForms()">Log in here</span></p>
             </div>
 
         </div>
     </div>
 
-    <!-- JavaScript to make the buttons work -->
+    <!-- JavaScript that makes the forms actually check for real inputs -->
     <script>
         function showAuth() {
             document.getElementById('welcome-section').style.display = 'none';
@@ -123,8 +122,50 @@
             }
         }
 
-        function goToDashboard() {
-            window.location.href = "dashboard.html";
+        function handleSignUp() {
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            if (name === "" || email === "" || password === "") {
+                alert("Error: Please fill in all details to create an account!");
+                return;
+            }
+
+            // Save the user data to the browser memory
+            localStorage.setItem('gtt_email', email);
+            localStorage.setItem('gtt_password', password);
+            localStorage.setItem('gtt_name', name);
+
+            alert("Account created successfully! Please log in.");
+            
+            // Clear the boxes and switch to login form
+            document.getElementById('reg-name').value = "";
+            document.getElementById('reg-email').value = "";
+            document.getElementById('reg-password').value = "";
+            toggleForms();
+        }
+
+        function handleLogin() {
+            const emailInput = document.getElementById('login-email').value;
+            const passwordInput = document.getElementById('login-password').value;
+
+            if (emailInput === "" || passwordInput === "") {
+                alert("Error: Please enter both your email and password.");
+                return;
+            }
+
+            // Check if what they typed matches what is saved in memory
+            const savedEmail = localStorage.getItem('gtt_email');
+            const savedPassword = localStorage.getItem('gtt_password');
+
+            if (emailInput === savedEmail && passwordInput === savedPassword) {
+                // If it matches, let them into the dashboard!
+                window.location.href = "dashboard.html";
+            } else {
+                // If it doesn't match, block them!
+                alert("Incorrect email or password. Please try again or create an account first.");
+            }
         }
     </script>
 
