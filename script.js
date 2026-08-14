@@ -31,7 +31,7 @@ function processDataOrder() {
     alert("Insufficient Wallet Balance!\n\nAttempted Order: " + selectedNet + " (" + dataType + ")");
 }
 
-// --- WhatsApp Message Handler ---
+// --- WhatsApp Message Handler (Connected to Your DM) ---
 function sendWhatsAppMessage() {
     const msgText = document.getElementById('wa-message-text').value;
     
@@ -40,13 +40,13 @@ function sendWhatsAppMessage() {
         return;
     }
 
-    // ⚠️ REPLACE THIS WITH YOUR REAL WHATSAPP PHONE NUMBER (e.g., 2348012345678)
-    const adminPhoneNumber = "2348000000000"; 
+    // Your Direct WhatsApp Number
+    const adminPhoneNumber = "2348136045102"; 
     
     const encodedMessage = encodeURIComponent(msgText);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
     
-    // Open in new tab
+    // Open WhatsApp directly with pre-typed message
     window.open(whatsappUrl, '_blank');
     closeModal('whatsapp-modal');
 }
