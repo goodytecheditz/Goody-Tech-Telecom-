@@ -1,73 +1,51 @@
-/* --- Ciptopop Dark Theme Reset --- */
+/* --- Global Dark Theme Reset --- */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; }
 body { background-color: #0f0f12; color: #ffffff; min-height: 100vh; }
 a { text-decoration: none; }
 
-/* --- Welcome / Hero Section --- */
-#welcome-section { 
-    text-align: center; background: #0f0f12; padding: 80px 20px; 
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-}
-.logo-text { font-size: 26px; font-weight: 900; letter-spacing: 1px; color: #ffffff; margin-bottom: 25px; }
-.logo-text span { color: #0066ff; }
-#welcome-section h1 { font-size: 34px; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
-#welcome-section p { font-size: 15px; max-width: 500px; color: #a0a0ab; line-height: 1.6; margin-bottom: 30px; }
-.hero-btn { background: #0066ff; color: white; padding: 16px 40px; font-size: 16px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4); width: 100%; max-width: 320px; }
-
-/* --- Auth Section (Sign In / Register) --- */
-#auth-section { display: none; min-height: 100vh; justify-content: center; align-items: center; padding: 25px 20px; background: #0f0f12; }
-.container { width: 100%; max-width: 420px; }
-h2.auth-title { font-size: 28px; font-weight: 800; color: #ffffff; margin-bottom: 8px; text-align: left; }
-.subtitle { color: #8f8f9d; font-size: 14px; margin-bottom: 30px; text-align: left; }
-
-.form-group { margin-bottom: 20px; text-align: left; position: relative; }
-label { display: block; margin-bottom: 8px; color: #e1e1e6; font-size: 14px; font-weight: 500; }
-input, select { 
-    width: 100%; padding: 16px; background: #1a1a1e; border: 1px solid #2e2e35; 
-    border-radius: 12px; font-size: 15px; color: #ffffff; outline: none; transition: 0.2s; 
-}
-input:focus, select:focus { border-color: #0066ff; background: #222228; }
-.password-wrapper { position: relative; }
-.toggle-eye { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8f8f9d; font-size: 18px; }
-
-.forgot-link { display: block; text-align: right; color: #0066ff; font-size: 13px; font-weight: 600; margin-top: -10px; margin-bottom: 25px; }
-
-button.auth-btn { 
-    width: 100%; padding: 16px; background-color: #0066ff; color: white; 
-    border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; 
-}
-.google-btn { 
-    width: 100%; padding: 14px; background: #1a1a1e; border: 1px solid #2e2e35; 
-    border-radius: 12px; color: white; font-size: 15px; font-weight: 600; cursor: pointer; 
-    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; 
-}
-
-.toggle-text { text-align: center; margin-top: 25px; font-size: 14px; color: #8f8f9d; }
-.toggle-btn { color: #0066ff; font-weight: 700; cursor: pointer; }
-#register-form { display: none; }
-
-/* --- Dashboard --- */
+/* --- Dashboard Section --- */
 .dashboard-body { padding: 20px; max-width: 500px; margin: 0 auto; background: #0f0f12; }
-.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-.wallet-card { background: #1a1a1e; padding: 25px; border-radius: 16px; border: 1px solid #2e2e35; margin-bottom: 25px; }
-.wallet-card h3 { color: #8f8f9d; font-size: 12px; letter-spacing: 1px; margin-bottom: 8px; }
-.wallet-card h1 { color: #ffffff; font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.logo-text { font-size: 18px; font-weight: 900; color: #ffffff; }
+.logo-text span { color: #0066ff; }
+#user-name-display { font-size: 14px; font-weight: 600; color: #0066ff; background: #1a1a1e; padding: 6px 14px; border-radius: 20px; border: 1px solid #2e2e35; }
+
+.wallet-card { background: #1a1a1e; padding: 25px; border-radius: 16px; border: 1px solid #2e2e35; margin-bottom: 20px; text-align: center; }
+.wallet-card h3 { color: #8f8f9d; font-size: 11px; letter-spacing: 1px; margin-bottom: 8px; }
+.wallet-card h1 { color: #ffffff; font-size: 38px; font-weight: 800; margin-bottom: 12px; }
 .acc-info { background: #25252c; padding: 10px 14px; border-radius: 8px; color: #0066ff; font-size: 13px; font-weight: 600; display: inline-block; }
 
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.btn { background: #1a1a1e; border: 1px solid #2e2e35; padding: 22px; border-radius: 14px; text-align: center; font-weight: 700; color: #fff; cursor: pointer; font-size: 15px; }
-.btn-fund { background: #0066ff; color: white; border: none; grid-column: span 2; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn { background: #1a1a1e; border: 1px solid #2e2e35; padding: 20px; border-radius: 14px; text-align: center; font-weight: 700; color: #fff; cursor: pointer; font-size: 14px; transition: 0.2s; }
+.btn:hover { border-color: #0066ff; }
+.btn-fund { background: #0066ff; color: white; border: none; grid-column: span 2; font-size: 16px; }
 
-/* --- Radio Options Modal (Data Type Picker) --- */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); justify-content: center; align-items: flex-end; z-index: 1000; }
-.modal-content { background: #1a1a1e; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; max-height: 80vh; overflow-y: auto; border-top: 1px solid #2e2e35; }
-.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #fff; }
+/* --- Inputs & Buttons --- */
+.form-group { margin-bottom: 16px; text-align: left; }
+label { display: block; margin-bottom: 6px; color: #a0a0ab; font-size: 13px; font-weight: 600; }
+input, select, textarea { 
+    width: 100%; padding: 14px; background: #25252c; border: 1px solid #33333c; 
+    border-radius: 10px; font-size: 14px; color: #ffffff; outline: none; 
+}
+input:focus, select:focus, textarea:focus { border-color: #0066ff; }
 
-.radio-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-.radio-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: #25252c; border-radius: 12px; cursor: pointer; border: 1px solid transparent; }
-.radio-item:hover { border-color: #0066ff; }
-.radio-item span { font-size: 16px; font-weight: 600; color: #fff; }
+/* Network Buttons */
+.network-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.net-btn { background: #25252c; border: 1px solid #33333c; color: #fff; padding: 12px 5px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.net-btn.active { background: #0066ff; border-color: #0066ff; }
 
-/* --- Floating WhatsApp Button --- */
-.whatsapp-float { position: fixed; bottom: 25px; right: 20px; background: #25d366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 999; }
-.whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+/* --- Modals (Popups) --- */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
+.modal-content { background: #1a1a1e; padding: 25px; border-radius: 16px; width: 100%; max-width: 420px; border: 1px solid #2e2e35; }
+.modal-title { font-size: 20px; font-weight: 800; margin-bottom: 10px; color: #fff; text-align: center; }
+.modal-desc { font-size: 13px; color: #a0a0ab; margin-bottom: 20px; text-align: center; line-height: 1.5; }
+
+.bank-card { background: #25252c; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #0066ff; }
+.bank-card p { margin-bottom: 6px; font-size: 13px; color: #e1e1e6; }
+
+button.auth-btn { width: 100%; padding: 14px; background-color: #0066ff; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+.btn-close { background-color: #25252c; color: #a0a0ab; border: 1px solid #33333c; }
+
+/* Floating WhatsApp Button */
+.whatsapp-float { position: fixed; bottom: 25px; right: 20px; background: #25d366; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 999; cursor: pointer; }
+.whatsapp-float svg { width: 28px; height: 28px; fill: white; }
