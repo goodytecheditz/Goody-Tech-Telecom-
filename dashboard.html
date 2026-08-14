@@ -13,17 +13,63 @@
         <p id="user-name-display">Welcome, User!</p>
     </div>
 
+    <!-- Primebill Style Wallet Card with Virtual Account -->
     <div class="wallet-card">
         <h3>WALLET BALANCE</h3>
         <h1>₦0.00</h1>
+        <p style="color: #666; font-size: 12px; margin-top: 10px;">Virtual Account: <strong>8012345678 (Wema Bank)</strong></p>
     </div>
 
     <div class="grid">
-        <button class="btn btn-fund" onclick="serviceClicked('Fund Wallet')">+ Fund Wallet</button>
-        <button class="btn" onclick="serviceClicked('Buy Data')">📱 Buy Data</button>
-        <button class="btn" onclick="serviceClicked('Buy Airtime')">📞 Buy Airtime</button>
-        <button class="btn" onclick="serviceClicked('Pay Electricity')">💡 Pay Electricity</button>
-        <button class="btn" onclick="serviceClicked('Cable TV')">📺 Cable TV</button>
+        <button class="btn btn-fund" onclick="openModal('fund-modal')">+ Fund Wallet</button>
+        <button class="btn" onclick="openModal('data-modal')">📱 Buy Data</button>
+        <button class="btn" onclick="alert('Airtime module loading...')">📞 Buy Airtime</button>
+        <button class="btn" onclick="alert('Electricity module loading...')">💡 Pay Bills</button>
+        <button class="btn" onclick="alert('Cable module loading...')">📺 Cable TV</button>
+    </div>
+
+    <!-- BUY DATA MODAL (The professional pop-up) -->
+    <div id="data-modal" class="modal">
+        <div class="modal-content">
+            <h3 style="color: #0056b3; margin-bottom: 15px;">Buy Internet Data</h3>
+            <div class="form-group">
+                <label>Network</label>
+                <select style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option>MTN</option>
+                    <option>Airtel</option>
+                    <option>GLO</option>
+                    <option>9Mobile</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Data Plan</label>
+                <select style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    <option>1GB - ₦250 (30 Days)</option>
+                    <option>2GB - ₦500 (30 Days)</option>
+                    <option>5GB - ₦1250 (30 Days)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter phone number">
+            </div>
+            <button class="auth-btn">Buy Now</button>
+            <button class="auth-btn" style="background: #ccc; color: #333;" onclick="closeModal('data-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- FUND WALLET MODAL -->
+    <div id="fund-modal" class="modal">
+        <div class="modal-content">
+            <h3 style="color: #0056b3; margin-bottom: 15px;">Fund Wallet</h3>
+            <p style="font-size: 14px; margin-bottom: 15px; color: #666;">Transfer money to your dedicated virtual account below to fund your wallet instantly.</p>
+            <div style="background: #f4f7f6; padding: 15px; border-radius: 5px; text-align: left;">
+                <p><strong>Bank:</strong> Wema Bank</p>
+                <p><strong>Account:</strong> 8012345678</p>
+                <p><strong>Name:</strong> Goody Tech - YourName</p>
+            </div>
+            <button class="auth-btn" style="background: #ccc; color: #333;" onclick="closeModal('fund-modal')">Close</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
