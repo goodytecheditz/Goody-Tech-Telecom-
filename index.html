@@ -17,6 +17,7 @@
 
     <div id="auth-section">
         <div class="container">
+            <!-- Login Form -->
             <div id="login-form">
                 <h2 class="auth-title">Welcome Back</h2>
                 <p class="subtitle">Please log in to your account.</p>
@@ -32,12 +33,17 @@
                 <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="toggleForms()">Sign up here</span></p>
             </div>
 
+            <!-- Registration Form (Upgraded) -->
             <div id="register-form">
                 <h2 class="auth-title">Create Account</h2>
                 <p class="subtitle">Join the best VTU platform today.</p>
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" id="reg-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="reg-phone" placeholder="e.g. 08012345678" required>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
@@ -47,6 +53,10 @@
                     <label>Password</label>
                     <input type="password" id="reg-password" placeholder="Create a password" required>
                 </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Confirm your password" required>
+                </div>
                 <button type="button" class="auth-btn" onclick="handleSignUp()">Sign Up</button>
                 <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="toggleForms()">Log in here</span></p>
             </div>
@@ -54,52 +64,5 @@
     </div>
 
     <script src="script.js"></script>
-</body>
-</html>            const name = document.getElementById('reg-name').value;
-            const email = document.getElementById('reg-email').value;
-            const password = document.getElementById('reg-password').value;
-
-            if (name === "" || email === "" || password === "") {
-                alert("Error: Please fill in all details to create an account!");
-                return;
-            }
-
-            // Save the user data to the browser memory
-            localStorage.setItem('gtt_email', email);
-            localStorage.setItem('gtt_password', password);
-            localStorage.setItem('gtt_name', name);
-
-            alert("Account created successfully! Please log in.");
-            
-            // Clear the boxes and switch to login form
-            document.getElementById('reg-name').value = "";
-            document.getElementById('reg-email').value = "";
-            document.getElementById('reg-password').value = "";
-            toggleForms();
-        }
-
-        function handleLogin() {
-            const emailInput = document.getElementById('login-email').value;
-            const passwordInput = document.getElementById('login-password').value;
-
-            if (emailInput === "" || passwordInput === "") {
-                alert("Error: Please enter both your email and password.");
-                return;
-            }
-
-            // Check if what they typed matches what is saved in memory
-            const savedEmail = localStorage.getItem('gtt_email');
-            const savedPassword = localStorage.getItem('gtt_password');
-
-            if (emailInput === savedEmail && passwordInput === savedPassword) {
-                // If it matches, let them into the dashboard!
-                window.location.href = "dashboard.html";
-            } else {
-                // If it doesn't match, block them!
-                alert("Incorrect email or password. Please try again or create an account first.");
-            }
-        }
-    </script>
-
 </body>
 </html>
