@@ -4,54 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goody Tech Telecom - Your Ultimate Plug</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f6; color: #333; }
-        
-        /* --- Welcome Page Styles --- */
-        #welcome-section { 
-            text-align: center; 
-            background: linear-gradient(135deg, #0056b3, #003d82); 
-            color: white; 
-            padding: 100px 20px; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .logo-text { font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #ff9800; }
-        #welcome-section h1 { font-size: 38px; margin-bottom: 15px; }
-        #welcome-section p { font-size: 18px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; color: #e0e0e0; }
-        .hero-btn { background: #ff9800; color: white; padding: 15px 40px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3); }
-        .hero-btn:hover { background: #e68a00; }
-
-        /* --- Login & Registration Styles --- */
-        #auth-section { 
-            display: none; 
-            min-height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 20px;
-        }
-        .container { background-color: #ffffff; width: 100%; max-width: 400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        h2.auth-title { text-align: center; margin-bottom: 5px; color: #0056b3; }
-        .subtitle { text-align: center; margin-bottom: 25px; color: #666; font-size: 14px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; color: #666; font-size: 14px; font-weight: 500; }
-        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; outline: none; }
-        input:focus { border-color: #0056b3; }
-        button.auth-btn { width: 100%; padding: 12px; background-color: #0056b3; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .toggle-text { text-align: center; margin-top: 15px; font-size: 14px; color: #666; }
-        .toggle-btn { color: #0056b3; font-weight: bold; cursor: pointer; }
-        
-        #register-form { display: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. The Welcome Screen -->
     <div id="welcome-section">
         <div class="logo-text">Goody Tech Telecom</div>
         <h1>Welcome to Goody Tech Telecom</h1>
@@ -59,11 +15,8 @@
         <button class="hero-btn" onclick="showAuth()">Get Started</button>
     </div>
 
-    <!-- 2. The Login & Signup Screen -->
     <div id="auth-section">
         <div class="container">
-            
-            <!-- Login Form -->
             <div id="login-form">
                 <h2 class="auth-title">Welcome Back</h2>
                 <p class="subtitle">Please log in to your account.</p>
@@ -79,7 +32,6 @@
                 <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="toggleForms()">Sign up here</span></p>
             </div>
 
-            <!-- Registration Form -->
             <div id="register-form">
                 <h2 class="auth-title">Create Account</h2>
                 <p class="subtitle">Join the best VTU platform today.</p>
@@ -98,32 +50,12 @@
                 <button type="button" class="auth-btn" onclick="handleSignUp()">Sign Up</button>
                 <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="toggleForms()">Log in here</span></p>
             </div>
-
         </div>
     </div>
 
-    <!-- JavaScript that makes the forms actually check for real inputs -->
-    <script>
-        function showAuth() {
-            document.getElementById('welcome-section').style.display = 'none';
-            document.getElementById('auth-section').style.display = 'flex';
-        }
-
-        function toggleForms() {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            
-            if (loginForm.style.display === 'none') {
-                loginForm.style.display = 'block';
-                registerForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'block';
-            }
-        }
-
-        function handleSignUp() {
-            const name = document.getElementById('reg-name').value;
+    <script src="script.js"></script>
+</body>
+</html>            const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
 
