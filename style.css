@@ -1,13 +1,54 @@
-/* --- Global Dark Theme Reset --- */
+/* --- Global Reset & Dark Theme --- */
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; }
 body { background-color: #0f0f12; color: #ffffff; min-height: 100vh; }
 a { text-decoration: none; }
 
-/* --- Dashboard Section --- */
+/* --- Welcome / Hero Section (index.html) --- */
+#welcome-section { 
+    text-align: center; background: #0f0f12; padding: 80px 20px; 
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+}
+.logo-text { font-size: 24px; font-weight: 900; letter-spacing: 1px; color: #ffffff; margin-bottom: 25px; }
+.logo-text span { color: #0066ff; }
+#welcome-section h1 { font-size: 32px; margin-bottom: 15px; font-weight: 800; line-height: 1.2; }
+#welcome-section p { font-size: 15px; max-width: 500px; color: #a0a0ab; line-height: 1.6; margin-bottom: 30px; }
+.hero-btn { background: #0066ff; color: white; padding: 16px 40px; font-size: 16px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 102, 255, 0.4); width: 100%; max-width: 320px; }
+
+/* --- Auth Section (Sign In / Register) --- */
+#auth-section { display: none; min-height: 100vh; justify-content: center; align-items: center; padding: 25px 20px; background: #0f0f12; }
+.container { width: 100%; max-width: 420px; }
+h2.auth-title { font-size: 26px; font-weight: 800; color: #ffffff; margin-bottom: 8px; text-align: left; }
+.subtitle { color: #8f8f9d; font-size: 14px; margin-bottom: 25px; text-align: left; }
+
+.form-group { margin-bottom: 16px; text-align: left; position: relative; }
+label { display: block; margin-bottom: 6px; color: #a0a0ab; font-size: 13px; font-weight: 600; }
+input, select, textarea { 
+    width: 100%; padding: 14px; background: #25252c; border: 1px solid #33333c; 
+    border-radius: 10px; font-size: 14px; color: #ffffff; outline: none; transition: 0.2s; 
+}
+input:focus, select:focus, textarea:focus { border-color: #0066ff; }
+
+.password-wrapper { position: relative; }
+.toggle-eye { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8f8f9d; font-size: 18px; }
+.forgot-link { display: block; text-align: right; color: #0066ff; font-size: 13px; font-weight: 600; margin-top: -6px; margin-bottom: 20px; }
+
+button.auth-btn { 
+    width: 100%; padding: 14px; background-color: #0066ff; color: white; 
+    border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px;
+}
+.google-btn { 
+    width: 100%; padding: 14px; background: #25252c; border: 1px solid #33333c; 
+    border-radius: 10px; color: white; font-size: 14px; font-weight: 600; cursor: pointer; 
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; 
+}
+
+.toggle-text { text-align: center; margin-top: 25px; font-size: 14px; color: #8f8f9d; }
+.toggle-btn { color: #0066ff; font-weight: 700; cursor: pointer; }
+#register-form { display: none; }
+
+/* --- Dashboard Section (dashboard.html) --- */
 .dashboard-body { padding: 20px; max-width: 500px; margin: 0 auto; background: #0f0f12; }
 .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.logo-text { font-size: 18px; font-weight: 900; color: #ffffff; }
-.logo-text span { color: #0066ff; }
 #user-name-display { font-size: 14px; font-weight: 600; color: #0066ff; background: #1a1a1e; padding: 6px 14px; border-radius: 20px; border: 1px solid #2e2e35; }
 
 .wallet-card { background: #1a1a1e; padding: 25px; border-radius: 16px; border: 1px solid #2e2e35; margin-bottom: 20px; text-align: center; }
@@ -20,16 +61,7 @@ a { text-decoration: none; }
 .btn:hover { border-color: #0066ff; }
 .btn-fund { background: #0066ff; color: white; border: none; grid-column: span 2; font-size: 16px; }
 
-/* --- Inputs & Buttons --- */
-.form-group { margin-bottom: 16px; text-align: left; }
-label { display: block; margin-bottom: 6px; color: #a0a0ab; font-size: 13px; font-weight: 600; }
-input, select, textarea { 
-    width: 100%; padding: 14px; background: #25252c; border: 1px solid #33333c; 
-    border-radius: 10px; font-size: 14px; color: #ffffff; outline: none; 
-}
-input:focus, select:focus, textarea:focus { border-color: #0066ff; }
-
-/* Network Buttons */
+/* Network Buttons Grid */
 .network-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .net-btn { background: #25252c; border: 1px solid #33333c; color: #fff; padding: 12px 5px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; }
 .net-btn.active { background: #0066ff; border-color: #0066ff; }
@@ -42,8 +74,6 @@ input:focus, select:focus, textarea:focus { border-color: #0066ff; }
 
 .bank-card { background: #25252c; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #0066ff; }
 .bank-card p { margin-bottom: 6px; font-size: 13px; color: #e1e1e6; }
-
-button.auth-btn { width: 100%; padding: 14px; background-color: #0066ff; color: white; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 10px; }
 .btn-close { background-color: #25252c; color: #a0a0ab; border: 1px solid #33333c; }
 
 /* Floating WhatsApp Button */
