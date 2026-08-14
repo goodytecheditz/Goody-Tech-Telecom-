@@ -10,7 +10,7 @@
 
     <div class="header">
         <h2>Goody Tech Telecom</h2>
-        <p>Welcome, User!</p>
+        <p id="user-name-display">Welcome, User!</p>
     </div>
 
     <div class="wallet-card">
@@ -19,11 +19,11 @@
     </div>
 
     <div class="grid">
-        <button class="btn btn-fund" onclick="alert('Virtual account payment gateway coming soon!')">+ Fund Wallet</button>
-        <button class="btn" onclick="alert('Buy Data form will appear here')">📱 Buy Data</button>
-        <button class="btn" onclick="alert('Buy Airtime form will appear here')">📞 Buy Airtime</button>
-        <button class="btn" onclick="alert('Electricity bill form will appear here')">💡 Pay Electricity</button>
-        <button class="btn" onclick="alert('Cable TV form will appear here')">📺 Cable TV</button>
+        <button class="btn btn-fund" onclick="serviceClicked('Fund Wallet')">+ Fund Wallet</button>
+        <button class="btn" onclick="serviceClicked('Buy Data')">📱 Buy Data</button>
+        <button class="btn" onclick="serviceClicked('Buy Airtime')">📞 Buy Airtime</button>
+        <button class="btn" onclick="serviceClicked('Pay Electricity')">💡 Pay Electricity</button>
+        <button class="btn" onclick="serviceClicked('Cable TV')">📺 Cable TV</button>
     </div>
 
     <script src="script.js"></script>
