@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Goody Tech Telecom</title>
+    <!-- Links to your main design file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <div class="container">
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2 class="auth-title">Goody Tech Telecom</h2>
+            <p class="subtitle">Welcome back! Please log in.</p>
+            
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+            </div>
+            <button type="button" class="auth-btn" onclick="login()">Log In</button>
+            <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="toggleForms()">Register here</span></p>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="register-form">
+            <h2 class="auth-title">Create Account</h2>
+            <p class="subtitle">Join Goody Tech Telecom today.</p>
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Create a password" required>
+            </div>
+            <button type="button" class="auth-btn" onclick="register()">Sign Up</button>
+            <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="toggleForms()">Log in here</span></p>
+        </div>
+    </div>
+
+    <!-- Links to your main functions file -->
+    <script src="script.js"></script>
+
+</body>
+</html>
