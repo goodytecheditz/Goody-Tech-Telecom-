@@ -1,4 +1,4 @@
-// --- User Display ---
+// --- User Display on Dashboard ---
 window.onload = function() {
     const userNameDisplay = document.getElementById('user-name-display');
     if (userNameDisplay) {
@@ -7,7 +7,35 @@ window.onload = function() {
     }
 };
 
-// --- Modal Control Functions ---
+// --- Page & Form Switching ---
+function showAuth(type) {
+    document.getElementById('welcome-section').style.display = 'none';
+    document.getElementById('auth-section').style.display = 'flex';
+    switchForm(type);
+}
+
+function switchForm(type) {
+    if (type === 'login') {
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('register-form').style.display = 'none';
+    } else {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'block';
+    }
+}
+
+// --- Navigation to Dashboard ---
+function handleLogin() {
+    window.location.href = 'dashboard.html';
+}
+
+function handleRegister() {
+    const name = document.getElementById('reg-name').value;
+    if (name) localStorage.setItem('gtt_name', name);
+    window.location.href = 'dashboard.html';
+}
+
+// --- Modal Control ---
 function openModal(id) { 
     document.getElementById(id).style.display = 'flex'; 
 }
@@ -16,7 +44,7 @@ function closeModal(id) {
     document.getElementById(id).style.display = 'none'; 
 }
 
-// --- Network Selector in Data Modal ---
+// --- Network Selection ---
 let selectedNet = "MTN";
 function selectNetwork(btnElement, netName) {
     selectedNet = netName;
@@ -25,13 +53,12 @@ function selectNetwork(btnElement, netName) {
     btnElement.classList.add('active');
 }
 
-// --- Data Purchase Demo Process ---
 function processDataOrder() {
     const dataType = document.getElementById('data-type-select').value;
     alert("Insufficient Wallet Balance!\n\nAttempted Order: " + selectedNet + " (" + dataType + ")");
 }
 
-// --- WhatsApp Message Handler (Connected to Your DM) ---
+// --- Direct WhatsApp DM ---
 function sendWhatsAppMessage() {
     const msgText = document.getElementById('wa-message-text').value;
     
@@ -40,13 +67,10 @@ function sendWhatsAppMessage() {
         return;
     }
 
-    // Your Direct WhatsApp Number
     const adminPhoneNumber = "2348136045102"; 
-    
     const encodedMessage = encodeURIComponent(msgText);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
     
-    // Open WhatsApp directly with pre-typed message
     window.open(whatsappUrl, '_blank');
     closeModal('whatsapp-modal');
 }
