@@ -8,86 +8,89 @@
 </head>
 <body>
 
-    <!-- Welcome Landing Screen -->
+    <!-- 1. LANDING / HERO SECTION -->
     <div id="welcome-section">
         <div class="logo-text">GOODY TECH <span>TELECOM</span></div>
         <h1>Quick Bill Payments & Cheap Data</h1>
         <p>Your ultimate sure plug for fast internet data, instant airtime, cable TV, and electricity bills.</p>
-        <button class="hero-btn" onclick="showAuth()">Get Started</button>
+        <button class="hero-btn" onclick="showAuth('login')">Get Started</button>
     </div>
 
-    <!-- Ciptopop Style Login / Register Section -->
+    <!-- 2. SIGN IN & REGISTER SECTION -->
     <div id="auth-section">
         <div class="container">
             
-            <!-- Login Form -->
+            <!-- LOGIN FORM -->
             <div id="login-form">
-                <div class="logo-text" style="font-size: 22px;">GOODY TECH <span>TELECOM</span></div>
+                <div class="logo-text">GOODY TECH <span>TELECOM</span></div>
                 <h2 class="auth-title">Welcome back, we've missed you!</h2>
                 <p class="subtitle">Sign in now to access all your services in one place</p>
                 
                 <div class="form-group">
                     <label>Email or Phone number*</label>
-                    <input type="text" id="login-email" placeholder="Enter your email address or phone number" required>
+                    <input type="text" id="login-user" placeholder="Enter your email address or phone number">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Password*</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                        <span class="toggle-eye" onclick="togglePassword('login-password')">👁️</span>
-                    </div>
+                    <input type="password" id="login-pass" placeholder="Enter your password">
                 </div>
-                
+
                 <a href="#" class="forgot-link">Forgot password</a>
-                
-                <button type="button" class="auth-btn" onclick="handleLogin()">Sign in</button>
-                
-                <button type="button" class="google-btn" onclick="alert('Google Sign-In coming soon!')">
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google"> Sign in with Google
-                </button>
-                
-                <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="toggleForms()">Sign up</span></p>
+                <button class="auth-btn" onclick="handleLogin()">Sign in</button>
+
+                <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="switchForm('register')">Sign up</span></p>
             </div>
 
-            <!-- Registration Form -->
+            <!-- REGISTER FORM -->
             <div id="register-form">
-                <div class="logo-text" style="font-size: 22px;">GOODY TECH <span>TELECOM</span></div>
+                <div class="logo-text">GOODY TECH <span>TELECOM</span></div>
                 <h2 class="auth-title">Create Account</h2>
                 <p class="subtitle">Join Goody Tech Telecom today</p>
                 
                 <div class="form-group">
                     <label>Full Name*</label>
-                    <input type="text" id="reg-name" placeholder="Enter full name" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number*</label>
-                    <input type="tel" id="reg-phone" placeholder="Enter phone number" required>
+                    <input type="text" id="reg-name" placeholder="Enter full name">
                 </div>
                 <div class="form-group">
                     <label>Email Address*</label>
-                    <input type="email" id="reg-email" placeholder="Enter email address" required>
+                    <input type="email" id="reg-email" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number*</label>
+                    <input type="tel" id="reg-phone" placeholder="Enter phone number">
                 </div>
                 <div class="form-group">
                     <label>Password*</label>
-                    <input type="password" id="reg-password" placeholder="Create password" required>
+                    <input type="password" id="reg-pass" placeholder="Create password">
                 </div>
-                <div class="form-group">
-                    <label>Confirm Password*</label>
-                    <input type="password" id="reg-confirm-password" placeholder="Confirm password" required>
-                </div>
-                
-                <button type="button" class="auth-btn" onclick="handleSignUp()">Sign Up</button>
-                <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="toggleForms()">Sign in</span></p>
+
+                <button class="auth-btn" onclick="handleRegister()">Create Account</button>
+
+                <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="switchForm('login')">Sign in</span></p>
             </div>
 
         </div>
     </div>
 
-    <!-- Floating WhatsApp Widget -->
-    <a href="https://wa.me/" target="_blank" class="whatsapp-float">
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <div class="whatsapp-float" onclick="openModal('whatsapp-modal')">
         <svg viewBox="0 0 32 32"><path d="M16 2a13.9 13.9 0 0 0-11.8 21.2L2 30l7-1.8A13.9 13.9 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.3-.3-.4A11.6 11.6 0 1 1 16 27.5z"/></svg>
-    </a>
+    </div>
+
+    <!-- WHATSAPP SUPPORT MODAL -->
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Customer Support</div>
+            <p class="modal-desc">Type your message or complaint below and click send to chat with us on WhatsApp.</p>
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea id="wa-message-text" rows="4" placeholder="Hello Goody Tech, I need help with..."></textarea>
+            </div>
+            <button class="auth-btn" style="background-color: #25d366;" onclick="sendWhatsAppMessage()">Send to WhatsApp</button>
+            <button class="auth-btn btn-close" onclick="closeModal('whatsapp-modal')">Cancel</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
