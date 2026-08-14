@@ -1,40 +1,19 @@
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background-color: #f4f7f6; color: #333; }
-
-/* --- Welcome Page Styles --- */
-#welcome-section { 
-    text-align: center; 
-    background: linear-gradient(135deg, #0056b3, #003d82); 
-    color: white; 
-    padding: 100px 20px; 
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
+/* --- Pro Modal Styles (The Primebill Look) --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
-.logo-text { font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #ff9800; }
-#welcome-section h1 { font-size: 38px; margin-bottom: 15px; }
-#welcome-section p { font-size: 18px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; color: #e0e0e0; }
-.hero-btn { background: #ff9800; color: white; padding: 15px 40px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
-.hero-btn:hover { background: #e68a00; }
-
-/* --- Login & Registration Styles --- */
-#auth-section { display: none; min-height: 100vh; justify-content: center; align-items: center; padding: 20px; }
-.container { background-color: #ffffff; width: 100%; max-width: 400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-h2.auth-title { text-align: center; margin-bottom: 5px; color: #0056b3; }
-.subtitle { text-align: center; margin-bottom: 25px; color: #666; font-size: 14px; }
-.form-group { margin-bottom: 15px; }
-label { display: block; margin-bottom: 5px; color: #666; font-size: 14px; font-weight: 500; }
-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; outline: none; }
-button.auth-btn { width: 100%; padding: 12px; background-color: #0056b3; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-.toggle-text { text-align: center; margin-top: 15px; font-size: 14px; color: #666; }
-.toggle-btn { color: #0056b3; font-weight: bold; cursor: pointer; }
-#register-form { display: none; }
-
-/* --- Dashboard Styles --- */
-.dashboard-body { padding: 20px; max-width: 800px; margin: 0 auto; }
-.header { background: #0056b3; color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
-.wallet-card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); margin-bottom: 20px; text-align: center; border-left: 5px solid #0056b3; }
-.wallet-card h3 { color: #888; font-size: 13px; letter-spacing: 1px; margin-bottom: 8px; }
-.wallet-card h1 { color: #0056b3; font-size: 36px; font-weight: bold; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.btn { background: white; border: 1px solid #e0e0e0; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold; color: #333; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.btn-fund { background: #0056b3; color: white; border: none; grid-column: span 2; font-size: 16px; }
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
