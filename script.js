@@ -126,4 +126,21 @@ function sendWhatsAppMessage() {
     
     window.open(whatsappUrl, '_blank');
     closeModal('whatsapp-modal');
+}function sendWhatsAppMessage() {
+    const msgInput = document.getElementById('wa-message-text');
+    const msgText = msgInput ? msgInput.value.trim() : "";
+    const errorEl = document.getElementById('wa-error');
+
+    if (msgText === "") {
+        if (errorEl) errorEl.innerText = "Please write a message before sending!";
+        return;
+    }
+
+    if (errorEl) errorEl.innerText = "";
+    const adminPhoneNumber = "2348136045102"; 
+    const encodedMessage = encodeURIComponent(msgText);
+    const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    closeModal('whatsapp-modal');
 }
