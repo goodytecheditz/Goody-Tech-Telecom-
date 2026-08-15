@@ -8,10 +8,7 @@
 </head>
 <body>
 
-    <!-- CUSTOM NOTIFICATION BANNER (Replaces ugly browser alerts) -->
-    <div id="toast-notify" class="toast-notify"></div>
-
-    <!-- 1. LANDING PAGE (EVERYTHING ABOUT GOODY TECH TELECOM) -->
+    <!-- 1. LANDING PAGE -->
     <div id="welcome-section">
         <!-- Top Nav -->
         <div class="landing-nav">
@@ -19,7 +16,7 @@
             <button class="nav-login-btn" onclick="showAuth('login')">Sign In</button>
         </div>
 
-        <!-- Hero Title -->
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>Fast Internet Data & Instant Airtime Top-Up</h1>
             <p>Your #1 reliable plug for cheap MTN, Airtel, Glo, and 9Mobile data, cable subscriptions, and electricity bill payments.</p>
@@ -30,36 +27,45 @@
             </div>
         </div>
 
-        <!-- Services Preview Grid -->
-        <div class="features-title">OUR SERVICES</div>
-        <div class="services-preview-grid">
-            <div class="service-box">
-                <div class="s-icon">📱</div>
-                <h3>Cheap Data Plans</h3>
-                <p>Buy SME, Gifting & Awoof data at wholesale prices with instant delivery.</p>
-            </div>
-            <div class="service-box">
-                <div class="s-icon">📞</div>
-                <h3>Airtime Top-Up</h3>
-                <p>Convert cash to airtime instantly across all major Nigerian networks.</p>
-            </div>
-            <div class="service-box">
-                <div class="s-icon">📺</div>
-                <h3>Cable TV Sub</h3>
-                <p>Instant activation for DSTV, GOTV, and Startimes packages.</p>
-            </div>
-            <div class="service-box">
-                <div class="s-icon">💡</div>
-                <h3>Electricity Bills</h3>
-                <p>Pay prepaid and postpaid electricity tokens conveniently from home.</p>
+        <!-- Services Preview Section -->
+        <div class="features-section">
+            <div class="features-title">OUR SERVICES</div>
+            <div class="services-preview-grid">
+                <div class="service-box">
+                    <div class="s-icon">📱</div>
+                    <div class="s-info">
+                        <h3>Cheap Data Plans</h3>
+                        <p>Buy SME, Gifting & Awoof data at wholesale prices with instant delivery.</p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon">📞</div>
+                    <div class="s-info">
+                        <h3>Airtime Top-Up</h3>
+                        <p>Convert cash to airtime instantly across all major Nigerian networks.</p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon">📺</div>
+                    <div class="s-info">
+                        <h3>Cable TV Subscription</h3>
+                        <p>Instant activation for DSTV, GOTV, and Startimes packages.</p>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="s-icon">💡</div>
+                    <div class="s-info">
+                        <h3>Electricity Bills</h3>
+                        <p>Pay prepaid and postpaid electricity tokens conveniently from home.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 2. SIGN IN & REGISTER SECTION -->
+    <!-- 2. AUTH SECTION (SIGN IN & REGISTER) -->
     <div id="auth-section">
         <div class="container">
-            
             <button class="back-to-home" onclick="showLanding()">← Back to Home</button>
 
             <!-- LOGIN FORM -->
@@ -81,7 +87,6 @@
                 <div id="login-error" class="error-msg"></div>
 
                 <button class="auth-btn" onclick="handleLogin()">Sign In</button>
-
                 <p class="toggle-text">Don't have an account? <span class="toggle-btn" onclick="switchForm('register')">Sign up</span></p>
             </div>
 
@@ -110,6 +115,47 @@
 
                 <div id="reg-error" class="error-msg"></div>
 
+                <button class="auth-btn" onclick="handleRegister()">Create Account</button>
+                <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="switchForm('login')">Sign in</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <div class="whatsapp-float" onclick="openModal('whatsapp-modal')">
+        <svg viewBox="0 0 32 32"><path d="M16 2a13.9 13.9 0 0 0-11.8 21.2L2 30l7-1.8A13.9 13.9 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.3-.3-.4A11.6 11.6 0 1 1 16 27.5z"/></svg>
+    </div>
+
+    <!-- WHATSAPP SUPPORT MODAL -->
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Customer Support</div>
+            <p class="modal-desc">Type your message below to chat directly with us on WhatsApp.</p>
+            
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea id="wa-message-text" rows="4" placeholder="Hello Goody Tech, I need help with..."></textarea>
+            </div>
+
+            <div id="wa-error" class="error-msg"></div>
+
+            <button class="auth-btn" style="background-color: #25d366;" onclick="sendWhatsAppMessage()">Send to WhatsApp</button>
+            <button class="auth-btn btn-close" onclick="closeModal('whatsapp-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- IN-APP CUSTOM POPUP MODAL (NO BROWSER ALERTS) -->
+    <div id="notice-modal" class="modal">
+        <div class="modal-content text-center">
+            <div id="notice-title" class="modal-title">Notification</div>
+            <p id="notice-msg" class="modal-desc"></p>
+            <button class="auth-btn" onclick="closeModal('notice-modal')">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
                 <button class="auth-btn" onclick="handleRegister()">Create Account</button>
 
                 <p class="toggle-text">Already have an account? <span class="toggle-btn" onclick="switchForm('login')">Sign in</span></p>
