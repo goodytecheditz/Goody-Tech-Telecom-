@@ -7,6 +7,18 @@ window.onload = function() {
     }
 };
 
+// --- Custom In-App Popup Notice (replaces native alert) ---
+function showNotice(title, message) {
+    const titleEl = document.getElementById('notice-title');
+    const msgEl = document.getElementById('notice-msg');
+    
+    if (titleEl && msgEl) {
+        titleEl.innerText = title;
+        msgEl.innerText = message;
+        openModal('notice-modal');
+    }
+}
+
 // --- Page & Form Switching ---
 function showAuth(type) {
     document.getElementById('welcome-section').style.display = 'none';
@@ -34,7 +46,7 @@ function clearErrors() {
     document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
 }
 
-// --- Login Validation (Requires Username & Password) ---
+// --- Login & Register Validation ---
 function handleLogin() {
     const user = document.getElementById('login-user').value.trim();
     const pass = document.getElementById('login-pass').value.trim();
@@ -45,12 +57,10 @@ function handleLogin() {
         return;
     }
 
-    // Save user reference and enter dashboard
     localStorage.setItem('gtt_name', user);
     window.location.href = 'dashboard.html';
 }
 
-// --- Register Validation ---
 function handleRegister() {
     const name = document.getElementById('reg-name').value.trim();
     const email = document.getElementById('reg-email').value.trim();
@@ -69,24 +79,47 @@ function handleRegister() {
 
 // --- Modal Control ---
 function openModal(id) { 
-    document.getElementById(id).style.display = 'flex'; 
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = 'flex'; 
 }
 
 function closeModal(id) { 
-    document.getElementById(id).style.display = 'none'; 
+    const modal = document.getElementById(id);
+    if (modal) modal.style.display = 'none'; 
 }
 
-// --- Direct WhatsApp Support (No Browser Alerts!) ---
+// --- Network Selection ---
+let selectedNet = "MTN";
+function selectNetwork(btnElement, netName) {
+    selectedNet = netName;
+    const allNetBtns = document.querySelectorAll('.net-btn');
+    allNetBtns.forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+}
+
+// --- Order Actions (Custom Dark Popups instead of Browser Alerts) ---
+function processDataOrder() {
+    closeModal('data-modal');
+    showNotice("Insufficient Balance", "Insufficient wallet balance to complete this data purchase. Please fund your wallet.");
+}
+
+function processAirtimeOrder() {
+    closeModal('airtime-modal');
+    showNotice("Insufficient Balance", "Insufficient wallet balance to purchase airtime. Please fund your wallet.");
+}
+
+// --- WhatsApp Direct DM ---
 function sendWhatsAppMessage() {
-    const msgText = document.getElementById('wa-message-text').value.trim();
+    const msgInput = document.getElementById('wa-message-text');
+    const msgText = msgInput ? msgInput.value.trim() : "";
     const errorEl = document.getElementById('wa-error');
 
     if (msgText === "") {
-        errorEl.innerText = "Please write a message before sending!";
+        if (errorEl) errorEl.innerText = "Please write a message before sending!";
         return;
     }
 
-    errorEl.innerText = "";
+    if (errorEl) errorEl.innerText = "";
     const adminPhoneNumber = "2348136045102"; 
     const encodedMessage = encodeURIComponent(msgText);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
