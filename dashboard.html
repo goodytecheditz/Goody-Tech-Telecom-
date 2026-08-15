@@ -18,7 +18,7 @@
     <div class="wallet-card">
         <h3>WALLET BALANCE</h3>
         <h1>₦0.00</h1>
-        <div class="acc-info">Wema Bank: 0000000000 (Manual Funding)</div>
+        <div class="acc-info">Wema Bank: 8013604510 (Manual Funding)</div>
     </div>
 
     <!-- Main Service Grid -->
@@ -32,12 +32,11 @@
 
     <!-- ================= MODALS ================= -->
 
-    <!-- BUY DATA MODAL (Network + Data Type + Phone) -->
+    <!-- BUY DATA MODAL -->
     <div id="data-modal" class="modal">
         <div class="modal-content">
             <div class="modal-title">Buy Internet Data</div>
             
-            <!-- Step 1: Select Network -->
             <div class="form-group">
                 <label>1. Select Network</label>
                 <div class="network-grid">
@@ -48,32 +47,26 @@
                 </div>
             </div>
 
-            <!-- Step 2: Select Data Type -->
             <div class="form-group">
                 <label>2. Select Data Type</label>
                 <select id="data-type-select">
                     <option value="SME">SME</option>
                     <option value="SME Plus">SME Plus</option>
                     <option value="SME2">SME2</option>
-                    <option value="POS Special Data">POS Special Data</option>
                     <option value="Gifting">Gifting</option>
                     <option value="Awoof">Awoof</option>
-                    <option value="DataShare">DataShare</option>
                 </select>
             </div>
 
-            <!-- Step 3: Select Plan -->
             <div class="form-group">
                 <label>3. Select Plan</label>
                 <select>
                     <option>1.0 GB SME - ₦280 (30 Days)</option>
                     <option>2.0 GB SME - ₦560 (30 Days)</option>
                     <option>5.0 GB SME - ₦1,400 (30 Days)</option>
-                    <option>10.0 GB SME - ₦2,800 (30 Days)</option>
                 </select>
             </div>
 
-            <!-- Step 4: Phone Number -->
             <div class="form-group">
                 <label>4. Phone Number</label>
                 <input type="tel" placeholder="Enter recipient phone number">
@@ -81,6 +74,27 @@
 
             <button class="auth-btn" onclick="processDataOrder()">Purchase Now</button>
             <button class="auth-btn btn-close" onclick="closeModal('data-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- BUY AIRTIME MODAL -->
+    <div id="airtime-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">Buy Airtime</div>
+            <div class="form-group">
+                <label>Network</label>
+                <select><option>MTN</option><option>Airtel</option><option>Glo</option><option>9Mobile</option></select>
+            </div>
+            <div class="form-group">
+                <label>Amount (₦)</label>
+                <input type="number" placeholder="Enter amount (e.g. 500)">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter phone number">
+            </div>
+            <button class="auth-btn" onclick="processAirtimeOrder()">Buy Airtime</button>
+            <button class="auth-btn btn-close" onclick="closeModal('airtime-modal')">Cancel</button>
         </div>
     </div>
 
@@ -92,24 +106,50 @@
             
             <div class="bank-card">
                 <p><strong>Bank Name:</strong> Moniepoint / Wema</p>
-                <p><strong>Account Number:</strong> 0000000000</p>
+                <p><strong>Account Number:</strong> 8013604510</p>
                 <p><strong>Account Name:</strong> Goody Tech Telecom</p>
             </div>
             
-            <p class="modal-desc" style="font-size: 12px;">After payment, send your proof of payment via customer support below.</p>
+            <p class="modal-desc" style="font-size: 12px;">After payment, send your receipt via WhatsApp customer support.</p>
             <button class="auth-btn btn-close" onclick="closeModal('fund-modal')">Close</button>
         </div>
     </div>
 
-    <!-- WHATSAPP SUPPORT MODAL (Popup Chatbox) -->
+    <!-- WHATSAPP SUPPORT MODAL -->
     <div id="whatsapp-modal" class="modal">
         <div class="modal-content">
             <div class="modal-title">Customer Support</div>
-            <p class="modal-desc">Type your message or complaint below and click send to chat with us on WhatsApp.</p>
+            <p class="modal-desc">Type your message below and click send to chat with us on WhatsApp.</p>
             
             <div class="form-group">
                 <label>Your Message</label>
                 <textarea id="wa-message-text" rows="4" placeholder="Hello Goody Tech, I need help with..."></textarea>
+            </div>
+
+            <div id="wa-error" class="error-msg"></div>
+
+            <button class="auth-btn" style="background-color: #25d366;" onclick="sendWhatsAppMessage()">Send to WhatsApp</button>
+            <button class="auth-btn btn-close" onclick="closeModal('whatsapp-modal')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- IN-APP CUSTOM POPUP MODAL (REPLACES BROWSER ALERTS) -->
+    <div id="notice-modal" class="modal">
+        <div class="modal-content text-center">
+            <div id="notice-title" class="modal-title">Notification</div>
+            <p id="notice-msg" class="modal-desc"></p>
+            <button class="auth-btn" onclick="closeModal('notice-modal')">OK</button>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <div class="whatsapp-float" onclick="openModal('whatsapp-modal')">
+        <svg viewBox="0 0 32 32"><path d="M16 2a13.9 13.9 0 0 0-11.8 21.2L2 30l7-1.8A13.9 13.9 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.2-4.4 1.1 1.2-4.3-.3-.4A11.6 11.6 0 1 1 16 27.5z"/></svg>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>                <textarea id="wa-message-text" rows="4" placeholder="Hello Goody Tech, I need help with..."></textarea>
             </div>
 
             <button class="auth-btn" style="background-color: #25d366;" onclick="sendWhatsAppMessage()">Send to WhatsApp</button>
