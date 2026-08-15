@@ -14,7 +14,13 @@ function showAuth(type) {
     switchForm(type);
 }
 
+function showLanding() {
+    document.getElementById('welcome-section').style.display = 'block';
+    document.getElementById('auth-section').style.display = 'none';
+}
+
 function switchForm(type) {
+    clearErrors();
     if (type === 'login') {
         document.getElementById('login-form').style.display = 'block';
         document.getElementById('register-form').style.display = 'none';
@@ -24,14 +30,40 @@ function switchForm(type) {
     }
 }
 
-// --- Navigation to Dashboard ---
+function clearErrors() {
+    document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
+}
+
+// --- Login Validation (Requires Username & Password) ---
 function handleLogin() {
+    const user = document.getElementById('login-user').value.trim();
+    const pass = document.getElementById('login-pass').value.trim();
+    const errorEl = document.getElementById('login-error');
+
+    if (!user || !pass) {
+        errorEl.innerText = "Please enter both your email/phone and password.";
+        return;
+    }
+
+    // Save user reference and enter dashboard
+    localStorage.setItem('gtt_name', user);
     window.location.href = 'dashboard.html';
 }
 
+// --- Register Validation ---
 function handleRegister() {
-    const name = document.getElementById('reg-name').value;
-    if (name) localStorage.setItem('gtt_name', name);
+    const name = document.getElementById('reg-name').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const phone = document.getElementById('reg-phone').value.trim();
+    const pass = document.getElementById('reg-pass').value.trim();
+    const errorEl = document.getElementById('reg-error');
+
+    if (!name || !email || !phone || !pass) {
+        errorEl.innerText = "Please fill in all details to create an account.";
+        return;
+    }
+
+    localStorage.setItem('gtt_name', name);
     window.location.href = 'dashboard.html';
 }
 
@@ -44,29 +76,17 @@ function closeModal(id) {
     document.getElementById(id).style.display = 'none'; 
 }
 
-// --- Network Selection ---
-let selectedNet = "MTN";
-function selectNetwork(btnElement, netName) {
-    selectedNet = netName;
-    const allNetBtns = document.querySelectorAll('.net-btn');
-    allNetBtns.forEach(btn => btn.classList.remove('active'));
-    btnElement.classList.add('active');
-}
-
-function processDataOrder() {
-    const dataType = document.getElementById('data-type-select').value;
-    alert("Insufficient Wallet Balance!\n\nAttempted Order: " + selectedNet + " (" + dataType + ")");
-}
-
-// --- Direct WhatsApp DM ---
+// --- Direct WhatsApp Support (No Browser Alerts!) ---
 function sendWhatsAppMessage() {
-    const msgText = document.getElementById('wa-message-text').value;
-    
-    if (msgText.trim() === "") {
-        alert("Please write a message before sending!");
+    const msgText = document.getElementById('wa-message-text').value.trim();
+    const errorEl = document.getElementById('wa-error');
+
+    if (msgText === "") {
+        errorEl.innerText = "Please write a message before sending!";
         return;
     }
 
+    errorEl.innerText = "";
     const adminPhoneNumber = "2348136045102"; 
     const encodedMessage = encodeURIComponent(msgText);
     const whatsappUrl = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
